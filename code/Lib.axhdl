@@ -1,0 +1,14 @@
+from u8 import *;
+from seg7 import *;
+
+arch Main(
+    in u8 a,
+    out u8 b
+);
+
+fn Main(
+    comp seg7 seg
+){
+    b <= a;
+    seg <= a;
+}
