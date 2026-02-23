@@ -1,14 +1,17 @@
-from u8 import *;
-from seg7 import *;
+from u8 import *
+from seg7 import *
 
-arch Main(
-    in u8 a,
-    out u8 b
-);
+arch Main
+    in u1 a
+    out u1 z
+end
 
-fn Main(
-    comp seg7 seg
-){
-    b <= a;
-    seg <= a;
-}
+def Main
+    u2 b
+    u2 c
+    seg7 seg
+begin
+    --c = b[0:2]
+    z = a
+    seg = a
+end
