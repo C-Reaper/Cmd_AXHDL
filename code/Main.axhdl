@@ -1,9 +1,12 @@
 arch Main
     in u1 a
-    out u1 z
+    in u1 b
+    out u1 c
 end
 
 def Main
+    u1 z
 begin
-    z = a
+    z = a & b
+    c = z
 end

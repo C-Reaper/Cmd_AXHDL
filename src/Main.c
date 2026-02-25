@@ -18,13 +18,13 @@ void Fn_Runner(AXHDL* hdl,AXHDL_U64 step){
 }
 
 int main(){
-    AXHDL hdl = AXHDL_New("./libs");
+    AXHDL hdl = AXHDL_New("./bin");
     
     AXHDL_Push_Signal(&hdl,AXHDL_Signal_New("u1","clk",(AXHDL_U8[]){ 0x01U },1U,AXHDL_SIGNAL_DIR_OUT));
     AXHDL_Push_Signal(&hdl,AXHDL_Signal_New("u1","reset",(AXHDL_U8[]){ 0x01U },1U,AXHDL_SIGNAL_DIR_OUT));
     
     AXHDL_Script(&hdl,"./code/Main.axhdl");
-    AXHDL_Run_Sim(&hdl,100ULL,Fn_Runner);
+    AXHDL_Run_Sim(&hdl,10ULL,Fn_Runner);
 
     AXHDL_Print(&hdl);
     AXHDL_Free(&hdl);

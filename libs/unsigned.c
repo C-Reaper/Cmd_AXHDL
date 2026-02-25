@@ -12,7 +12,7 @@ Token Unsigned_Unsigned_Handler_Ass(AXHDL* hdl,Token* op,Vector* args){
     }else if(b->tt==TOKEN_STRING){
         
     }else{
-        AXHDL_ErrorHandler(hdl,"Ass: Error -> %s has no pointer type!",b->str);
+        AXHDL_ErrorHandler(hdl,"Ass: Error -> %s has unsigned type!",b->str);
         return Token_Null();
     }
     return Token_Cpy(a);
@@ -56,7 +56,7 @@ Token Unsigned_Handler_Cast(AXHDL* hdl,Token* op,Vector* args){
     return Token_Null();
 }
 
-void Ex_Packer(ExternFunctionMap* Extern_Functions,Vector* funcs,AXHDL* hdl){//Vector<CStr>
+void Ex_Packer(ExternFunctionMap* Extern_Functions,Vector* funcs,AXHDL* hdl){ // Vector<CStr>
     TypeMap_PushContained(&hdl->types,funcs,
         Type_Make(AXHDL_TYPE_UNSIGNED,sizeof(AXHDL_Signal),OperatorInterationMap_Make((OperatorInterater[]){
             OperatorInterater_Make((CStr[]){ NULL },OperatorDefineMap_Make((OperatorDefiner[]){
