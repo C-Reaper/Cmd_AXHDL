@@ -7,9 +7,9 @@ void Fn_Runner(AXHDL* hdl,AXHDL_U64 step){
     
     AXHDL_Run_Arch(
         hdl,
-        "Main",
-        &in,
-        &out
+        "And",
+        (AXHDL_Signal[]){ in,AXHDL_Signal_Null() },
+        (AXHDL_Signal[]){ out,AXHDL_Signal_Null() }
     );
     printf("[Sim]: Out: %x\n",((AXHDL_U8*)out.data)[0]);
 
@@ -24,9 +24,9 @@ int main(){
     AXHDL_Push_Signal(&hdl,AXHDL_Signal_New("u1","reset",(AXHDL_U8[]){ 0x01U },1U,AXHDL_SIGNAL_DIR_OUT));
     
     AXHDL_Script(&hdl,"./code/Main.axhdl");
-    AXHDL_Run_Sim(&hdl,10ULL,Fn_Runner);
-
     AXHDL_Print(&hdl);
+
+    AXHDL_Run_Sim(&hdl,1ULL,Fn_Runner);
     AXHDL_Free(&hdl);
     return 0;
 }

@@ -1,12 +1,11 @@
 from unsigned import *
-from seg7 import *
+--from seg7 import *
 
 arch And
     u1 in a
     u1 in b
     u1 out c
 def
-    
 begin
     c = a & b
 end

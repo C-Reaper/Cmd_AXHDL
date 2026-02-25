@@ -1,12 +1,11 @@
-arch Main
-    in u1 a
-    in u1 b
-    out u1 c
-end
+from unsigned import *
+--from seg7 import *
 
-def Main
-    u1 z
+arch And
+    unsigned<1> in a
+    unsigned<1> in b
+    unsigned<1> out c
+def
 begin
-    z = a & b
-    c = z
+    c = a & b
 end
