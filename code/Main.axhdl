@@ -6,6 +6,16 @@ arch And
     unsigned<1> in b
     unsigned<1> out c
 def
+    unsigned<1> x
+    unsigned<1> y
+    --seg7<7> seg
 begin
     c = a & b
+    --if a == b
+    --    c = a & b
+    --elseif a < b
+    --    c = a ^ b
+    --else
+    --    c = a | b
+    --end
 end
