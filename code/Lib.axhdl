@@ -9,3 +9,22 @@ def
 begin
     c = a & b
 end
+
+arch Not
+    u1 in a
+    u1 out b
+def
+begin
+    b = ~a
+end
+
+arch Not2
+    u1 in a
+    u1 out cb
+def
+begin
+    comp Not
+        Not::a = a
+        na = Not::b
+    end
+end
