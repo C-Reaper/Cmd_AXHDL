@@ -21,7 +21,7 @@ int main(){
             
             ChipSet_Exe(
                 &cb.cs,
-                "MAIN",
+                "Main",
                 ins,
                 outs
             );
