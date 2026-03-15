@@ -3,10 +3,12 @@
 
 int main(){
     ChipBench cb = ChipBench_New("./assets/digits");
-    ChipBench_Load(&cb,"./bin/std");
+    ChipBench_Load(&cb,"./bench/std");
 
     AXHDL hdl = AXHDL_New("./bin");
     AXHDL_Script(&hdl,"./code/Main.axhdl");
+
+    AXHDL_Compile(&hdl);
     AXHDL_Print(&hdl);
 
     AXHDL_Build(&hdl,&cb.cs);
@@ -21,7 +23,7 @@ int main(){
             
             ChipSet_Exe(
                 &cb.cs,
-                "Main",
+                "MAIN",
                 ins,
                 outs
             );

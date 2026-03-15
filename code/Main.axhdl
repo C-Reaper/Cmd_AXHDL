@@ -1,14 +1,15 @@
 from unsigned import *
+from std import *
 
-arch Main
+arch MAIN
     unsigned<1> in x
     unsigned<1> in y
     unsigned<1> out z
-def
-begin
-    comp AND a0
-        a => x
-        b => y
-        c => z
+    
+    chip AND a0
+        x => a0.a
+        y => a0.b
     end
+
+    a0.c => z
 end
