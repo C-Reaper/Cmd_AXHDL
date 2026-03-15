@@ -1,11 +1,14 @@
 from unsigned import *
 
 arch Main
-    unsigned<10> in x
-    unsigned<10> in y
+    unsigned<1> in x
+    unsigned<1> in y
+    unsigned<1> out z
 def
 begin
-    comp seg7 s0
-        x => a
+    comp AND a0
+        a => x
+        b => y
+        c => z
     end
 end
