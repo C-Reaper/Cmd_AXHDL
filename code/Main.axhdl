@@ -1,15 +1,29 @@
 from unsigned import *
 from std import *
+from seg7 import *
 
 arch MAIN
     unsigned<1> in x
     unsigned<1> in y
     unsigned<1> out z
+    unsigned<1> out w
     
     chip AND a0
         x => a0.a
         y => a0.b
     end
+    chip XOR a1
+        x => a1.a
+        y => a1.b
+    end
+
+    chip SEG7 a2
+        a0.c => a2.a
+    end
+    chip SEG7 a3
+        a1.c => a3.a
+    end
 
     a0.c => z
+    a1.c => w
 end
