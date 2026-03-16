@@ -1,30 +1,29 @@
 from unsigned import *
---from seg7 import *
+from std import *
+from seg7 import *
 
-arch And
-    u1 in a
-    u1 in b
-    u1 out c
-def
-begin
-    c = a & b
-end
-
-arch Not
-    u1 in a
-    u1 out b
-def
-begin
-    b = ~a
-end
-
-arch Not2
-    u1 in a
-    u1 out cb
-def
-begin
-    comp Not
-        Not::a = a
-        na = Not::b
+arch HADD
+    unsigned<1> in x
+    unsigned<1> in y
+    unsigned<1> out z
+    unsigned<1> out w
+    
+    chip AND a0
+        x => a0.a
+        y => a0.b
     end
+    chip XOR a1
+        x => a1.a
+        y => a1.b
+    end
+
+    chip SEG7 a2
+        a0.c => a2.a
+    end
+    chip SEG7 a3
+        a1.c => a3.a
+    end
+
+    a0.c => z
+    a1.c => w
 end
