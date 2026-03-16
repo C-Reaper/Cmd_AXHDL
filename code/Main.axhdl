@@ -7,7 +7,7 @@ arch MAIN
     unsigned<1> in y
     unsigned<1> out z
     unsigned<1> out w
-    
+
     chip AND a0
         x => a0.a
         y => a0.b
