@@ -5,16 +5,36 @@ from seg7 import *
 arch MAIN
     unsigned<1> in x
     unsigned<1> in y
-    unsigned<1> out z
-    unsigned<1> out w
+    unsigned<1> out e
+    unsigned<1> out ne
+    unsigned<1> out g
+    unsigned<1> out l
+    unsigned<1> out ge
+    unsigned<1> out le
     
-    z = x & y
-    w = x ^ y
+    e = x == y
+    ne = x != y
+    g = x > y
+    l = x < y
+    ge = x >= y
+    le = x <= y
 
     chip SEG7 s0
-        s0.a = x & y
+        s0.a = x == y
     end
     chip SEG7 s1
-        s1.a = x ^ y
+        s1.a = x != y
+    end
+    chip SEG7 s2
+        s2.a = x > y
+    end
+    chip SEG7 s3
+        s3.a = x < y
+    end
+    chip SEG7 s4
+        s4.a = x >= y
+    end
+    chip SEG7 s5
+        s5.a = x <= y
     end
 end

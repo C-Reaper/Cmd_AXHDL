@@ -97,6 +97,12 @@ void Ex_Packer(ExternFunctionMap* Extern_Functions,Vector* funcs,AXHDL* hdl){ //
         AXHDL_Comp_New("unsigned","c",1,AXHDL_SIGNAL_DIR_OUT),
         AXHDL_Comp_Null()
     })));
+    AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("NEQ",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
+        AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","c",1,AXHDL_SIGNAL_DIR_OUT),
+        AXHDL_Comp_Null()
+    })));
     AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("GRT",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
         AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_IN),
         AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_IN),
@@ -104,6 +110,18 @@ void Ex_Packer(ExternFunctionMap* Extern_Functions,Vector* funcs,AXHDL* hdl){ //
         AXHDL_Comp_Null()
     })));
     AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("LES",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
+        AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","c",1,AXHDL_SIGNAL_DIR_OUT),
+        AXHDL_Comp_Null()
+    })));
+    AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("GRQ",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
+        AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","c",1,AXHDL_SIGNAL_DIR_OUT),
+        AXHDL_Comp_Null()
+    })));
+    AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("LEQ",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
         AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_IN),
         AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_IN),
         AXHDL_Comp_New("unsigned","c",1,AXHDL_SIGNAL_DIR_OUT),
