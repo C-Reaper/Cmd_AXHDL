@@ -38,3 +38,31 @@ arch MAIN
         s5.a = x <= y
     end
 end
+
+arch MAIN
+    unsigned<1> in a
+    unsigned<1> in b
+    unsigned<1> out c
+    
+    chip MUX m0
+        m0.a = a
+        m0.b = b
+        m0.c = a > b
+    end
+    chip MUX m1
+        m1.a = m0.d
+        m1.b = a + a
+        m1.c = m0.d > b
+        c = m1.d
+    end
+
+    chip SEG7 s0
+        s0.a = a
+    end
+    chip SEG7 s1
+        s1.a = b
+    end
+    chip SEG7 s2
+        s2.a = m1.d
+    end
+end
