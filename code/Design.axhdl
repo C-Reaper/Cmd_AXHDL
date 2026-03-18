@@ -8,10 +8,10 @@ arch TEST
     unsigned<1> out c
     
     if a > b then
-        a => c
+        c = a
     else
-        b => c
+        c = b
     end
 
-    (if a > b then a else b) => c
+    c = (if a > b then a else b)
 end

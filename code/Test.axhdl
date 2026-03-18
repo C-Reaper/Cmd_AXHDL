@@ -9,27 +9,35 @@ arch TEST
     unsigned<1> out ob
     unsigned<1> out oc
     unsigned<1> out od
+    unsigned<1> out oe
 
     chip AND a0
-        x => a0.a
-        y => a0.b
-        a0.c => oa
+        a0.a = x
+        a0.b = y
+        oa = a0.c
     end
     chip NOT a1
-        x => a1.a
-        a1.b => ob
+        a1.a = x
+        ob = a1.b
     end
     chip OR a2
-        x => a2.a
-        y => a2.b
-        a2.c => oc
+        a2.a = x
+        a2.b = y
+        oc = a2.c
     end
     chip XOR a3
-        x => a3.a
-        y => a3.b
-        a3.c => od
+        a3.a = x
+        a3.b = y
+        od = a3.c
     end
     chip SEG7 a4
-        x => a4.a
+        a4.a = x
+    end
+
+    chip MUX a5
+        a5.a = x
+        a5.b = y
+        a5.c = x > y
+        oe = a5.d
     end
 end

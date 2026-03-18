@@ -9,21 +9,21 @@ arch HADD
     unsigned<1> out w
     
     chip AND a0
-        x => a0.a
-        y => a0.b
+        a0.a = x
+        a0.b = y
     end
     chip XOR a1
-        x => a1.a
-        y => a1.b
+        a1.a = x
+        a1.b = y
     end
 
     chip SEG7 a2
-        a0.c => a2.a
+        a2.a = a0.c
     end
     chip SEG7 a3
-        a1.c => a3.a
+        a3.a = a1.c
     end
 
-    a0.c => z
-    a1.c => w
+    z = a0.c
+    w = a1.c
 end

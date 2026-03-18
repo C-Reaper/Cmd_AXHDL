@@ -2,18 +2,23 @@
 #include "/home/codeleaded/System/Static/Library/AXHDL.h"
 
 void Ex_Packer(ExternFunctionMap* Extern_Functions,Vector* funcs,AXHDL* hdl){ // Vector<CStr>
+    AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("NOT",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
+        AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_OUT),
+        AXHDL_Comp_Null()
+    })));
     AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("AND",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
         AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_IN),
         AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_IN),
         AXHDL_Comp_New("unsigned","c",1,AXHDL_SIGNAL_DIR_OUT),
         AXHDL_Comp_Null()
     })));
-    AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("NOT",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
+    AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("NAND",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
         AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_IN),
-        AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_OUT),
+        AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","c",1,AXHDL_SIGNAL_DIR_OUT),
         AXHDL_Comp_Null()
     })));
-    
     AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("OR",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
         AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_IN),
         AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_IN),
@@ -26,11 +31,81 @@ void Ex_Packer(ExternFunctionMap* Extern_Functions,Vector* funcs,AXHDL* hdl){ //
         AXHDL_Comp_New("unsigned","c",1,AXHDL_SIGNAL_DIR_OUT),
         AXHDL_Comp_Null()
     })));
-
     AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("MUX",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
         AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_IN),
         AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_IN),
-        AXHDL_Comp_New("unsigned","s",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","c",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","d",1,AXHDL_SIGNAL_DIR_OUT),
+        AXHDL_Comp_Null()
+    })));
+
+    AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("ZERO",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
+        AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_OUT),
+        AXHDL_Comp_Null()
+    })));
+    AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("ONE",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
+        AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_OUT),
+        AXHDL_Comp_Null()
+    })));
+
+    AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("SHL",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
+        AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","c",1,AXHDL_SIGNAL_DIR_OUT),
+        AXHDL_Comp_Null()
+    })));
+    AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("SHR",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
+        AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","c",1,AXHDL_SIGNAL_DIR_OUT),
+        AXHDL_Comp_Null()
+    })));
+
+    AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("ADD",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
+        AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","c",1,AXHDL_SIGNAL_DIR_OUT),
+        AXHDL_Comp_Null()
+    })));
+    AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("SUB",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
+        AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","c",1,AXHDL_SIGNAL_DIR_OUT),
+        AXHDL_Comp_Null()
+    })));
+    AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("MUL",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
+        AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","c",1,AXHDL_SIGNAL_DIR_OUT),
+        AXHDL_Comp_Null()
+    })));
+    AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("DIV",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
+        AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","c",1,AXHDL_SIGNAL_DIR_OUT),
+        AXHDL_Comp_Null()
+    })));
+    AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("NEG",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
+        AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_OUT),
+        AXHDL_Comp_Null()
+    })));
+    
+    AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("EQU",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
+        AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","c",1,AXHDL_SIGNAL_DIR_OUT),
+        AXHDL_Comp_Null()
+    })));
+    AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("GRT",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
+        AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","c",1,AXHDL_SIGNAL_DIR_OUT),
+        AXHDL_Comp_Null()
+    })));
+    AXHDL_Arch_Map_Add(&hdl->archs,AXHDL_Arch_Make("LES",AXHDL_Comp_Map_Make((AXHDL_Comp[]){
+        AXHDL_Comp_New("unsigned","a",1,AXHDL_SIGNAL_DIR_IN),
+        AXHDL_Comp_New("unsigned","b",1,AXHDL_SIGNAL_DIR_IN),
         AXHDL_Comp_New("unsigned","c",1,AXHDL_SIGNAL_DIR_OUT),
         AXHDL_Comp_Null()
     })));
