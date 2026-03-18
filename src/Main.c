@@ -16,8 +16,9 @@ int main(){
 
     if(!hdl.xc){
         Chip_Def* cd = ChipSet_Find(&cb.cs,"MAIN");
-        ChipBench_AddGUI(&cb,"SEG7",10U,0U,  (Chip_Impl*[]){ (Chip_Impl*)Vector_Get(&cd->chips,2) });
-        ChipBench_AddGUI(&cb,"SEG7",10U,250U,(Chip_Impl*[]){ (Chip_Impl*)Vector_Get(&cd->chips,3) });
+        AXHDL_Arch* aa = AXHDL_Arch_Map_Find(&hdl.archs,"MAIN");
+        ChipBench_AddGUI(&cb,"SEG7",10U,0U,  (Chip_Impl*[]){ (Chip_Impl*)Vector_Get(&cd->chips,AXHDL_Chip_Map_FindI(&aa->chips,"s0")) });
+        ChipBench_AddGUI(&cb,"SEG7",10U,250U,(Chip_Impl*[]){ (Chip_Impl*)Vector_Get(&cd->chips,AXHDL_Chip_Map_FindI(&aa->chips,"s1")) });
 
         ChipBench_Print(&cb);
         ChipBench_Start(&cb);

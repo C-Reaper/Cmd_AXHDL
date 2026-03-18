@@ -8,21 +8,13 @@ arch MAIN
     unsigned<1> out z
     unsigned<1> out w
     
-    chip AND a0
-        a0.a = x
-        a0.b = y
-        z = a0.c
-    end
-    chip XOR a1
-        a1.a = x
-        a1.b = y
-        w = a1.c
-    end
+    z = x & y
+    w = x ^ y
 
-    chip SEG7 a2
-        a2.a = a0.c
+    chip SEG7 s0
+        s0.a = x & y
     end
-    chip SEG7 a3
-        a3.a = a1.c
+    chip SEG7 s1
+        s1.a = x ^ y
     end
 end
