@@ -1,0 +1,17 @@
+from unsigned import *
+from std import *
+from seg7 import *
+
+arch TEST
+    unsigned<1> in a
+    unsigned<1> in b
+    unsigned<1> out c
+    
+    if a > b then
+        a => c
+    else
+        b => c
+    end
+
+    (if a > b then a else b) => c
+end

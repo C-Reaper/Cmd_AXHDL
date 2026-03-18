@@ -63,8 +63,17 @@ Token Unsigned_Unsigned_Handler_Dir(AXHDL* hdl,Token* op,Vector* args){
     printf("[Unsigned]: Dir: %s => %s\n",a->str,b->str);
 
     AXHDL_Arch* aa = AXHDL_CurrentArch(hdl);
-    if(aa && a->tt == TOKEN_STRING && b->tt == TOKEN_STRING){
-        Vector_Push(&aa->wires,(AXHDL_Wire[]){ AXHDL_Wire_New(a->str,b->str) });
+    if(!aa)                         AXHDL_ErrorHandler(hdl,"no arch found!");
+    else if(a->tt != TOKEN_STRING)  AXHDL_ErrorHandler(hdl,"%s not a signal!",a->str);
+    else if(b->tt != TOKEN_STRING)  AXHDL_ErrorHandler(hdl,"%s not a signal!",b->str);
+    else{
+        AXHDL_Signal_Dir a_dir = AXHDL_Arch_Pin_Dir(aa,a->str,&hdl->archs);
+        AXHDL_Signal_Dir b_dir = AXHDL_Arch_Pin_Dir(aa,b->str,&hdl->archs);
+        if(a_dir != AXHDL_SIGNAL_DIR_OUT && a_dir != AXHDL_SIGNAL_DIR_INOUT)        AXHDL_ErrorHandler(hdl,"%s has dir %d!",a->str,a_dir);
+        else if(b_dir != AXHDL_SIGNAL_DIR_IN && b_dir != AXHDL_SIGNAL_DIR_INOUT)    AXHDL_ErrorHandler(hdl,"%s has dir %d!",b->str,b_dir);
+        else{
+            Vector_Push(&aa->wires,(AXHDL_Wire[]){ AXHDL_Wire_New(a->str,b->str) });
+        }
     }
 
     return Token_Cpy(a);
