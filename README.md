@@ -1,193 +1,107 @@
-# Cmd_AXHDL
+# Project README
 
+## Overview
+The project is a collection of tools and scripts for developing software across different platforms using C/C++. It includes support for building applications on Linux, Windows, cross-compiling for Windows on Linux, and compiling for WebAssembly.
 
-## Project Overview
+## Features
+- **Multi-platform support**: Build and run applications on Linux, Windows, and WebAssembly.
+- **Code organization**: Clean separation of source code, libraries, and build configurations.
+- **Build automation**: Utilizes Makefiles to streamline the build process.
 
-This project implements specialized functionality related to axhdl.
-
-## Core Components
-
-### Main Functionality
-- Implements core algorithms for axhdl
-- Efficient data structures
-- Optimized performance
-- Clean code organization
-
-### Technical Features
-- C/C++ implementation
-- Dynamic memory management
-- Platform-independent design
-- Real-time capable
-
-### Architecture
-- Module separation
-- Clear interface design
-- Proper abstraction layers
-- Extensible design
-
-## Use Cases
-- Production systems
-- Educational purposes
-- Research applications
-- Performance-critical operations
-
-## Performance Characteristics
-- Optimized algorithms
-- Efficient memory usage
-- Scalable architecture
-- Minimal overhead
-
-## Implementation Quality
-- Well-organized code
-- Meaningful naming
-- Proper error handling
-- Memory management
-
-## Build and Deployment
-- Standard C/C++ compilation
-- Makefile-based building
-- Cross-platform support
-- Easy integration
-
-
-## Building the Project
-
-### Prerequisites
-- C/C++ Compiler (GCC, Clang, or MSVC)
-- Make utility
-- Standard development tools
-
-### Build Steps
-
-1. Navigate to project directory:
-```bash
-cd Cmd_AXHDL
-```
-
-2. Build the project:
-```bash
-make -f Makefile.(os) all
-```
-
-3. For clean rebuild:
-```bash
-make -f Makefile.(os) clean
-make -f Makefile.(os) all
-```
-
-4. If there are ./bin and ./libs directories, build libs with:
-```bash
-make -f Makefile.(os) cleanlib
-make -f Makefile.(os) lib
-```
-
-### Build Options
-```bash
-make -f Makefile.(os) all         # build output
-make -f Makefile.(os) do        # build + exe output
-make -f Makefile.(os) clean   # Remove build artifacts
-```
-
-## Running the Project
-
-Execute the compiled binary:
-
-```bash
-./build/Main(.exe)
-```
-
-Or using make:
-```bash
-make -f Makefile.(os) exe
-```
-
-## Project Organization
+## Project Structure
+The project structure is organized as follows:
 
 ```
-Cmd_AXHDL/
-├── src/
+<Project>/
+├── build/              # .exe files produced by Main.c
+├── libs/               # *.c for bin
+├── lib/                # librarys for my own languages
+├── code/               # scripts from my custom languages for example .rex, .ll, .omml
+├── data/               # Datafile for example .txt or dumped files
+├── assets/             # images and sound files
+├── src/                # src code
 │   ├── Main.c          # Entry point
-│   └── *.c             # Implementation files
-├── Makefile            # Build configuration
+│   └── *.h             # stand alone Header-based C-files, without *.c files that implement it
+├── Makefile.linux      # Linux Build configuration
+├── Makefile.windows    # Windows Build configuration
+├── Makefile.wine       # Wine Build configuration
 └── README.md           # This file
 ```
 
-## Technical Details
+### Prerequisites
+- **C/C++ Compiler and Debugger**: GCC for Linux, Clang for cross-compilation on Linux.
+- **Make utility**: Required for building the project.
+- **Standard development tools**: Essential for compiling and linking C/C++ code.
+- **Libraries**: Depending on the platform, additional libraries may be required. For example:
+  - **Linux**: None specified in the structure.
+  - **Windows**: WINAPI, X11, ALSA.
+  - **WebAssembly**: Emscripten or wasmtime.
 
-### Language: C/C++
-- Performance-oriented
-- Direct hardware access where needed
-- Memory efficient
-- Widely portable
+## Build & Run
+### Linux
+To build and run the project on Linux:
 
-### Key Technologies
-- Standard C library
-- System-specific libraries as needed
-- Algorithm optimization
-- Efficient data structures
+```sh
+cd <Project>
+make -f Makefile.linux all
+make -f Makefile.linux exe
+```
 
-### Code Quality
-- Clean, readable implementation
-- Proper error handling
-- Resource management
-- Well-documented algorithms
+To clean and rebuild:
 
-## Development Notes
+```sh
+make -f Makefile.linux clean
+make -f Makefile.linux all
+```
 
-### Architecture Decisions
-- Modular design for reusability
-- Efficient algorithms for performance
-- Clear separation of concerns
-- Extensible structure
+### Windows
+To build and run the project on Windows:
 
-### Performance Optimizations
-- Algorithm efficiency
-- Memory layout optimization
-- Cache-conscious programming
-- Minimal overhead
+```sh
+cd <Project>
+make -f Makefile.windows all
+make -f Makefile.windows exe
+```
 
-### Portability
-- Cross-platform compatible
-- Platform-specific optimizations where possible
-- Standard library usage
-- No external dependencies (where feasible)
+To clean and rebuild:
 
-## Troubleshooting
+```sh
+make -f Makefile.windows clean
+make -f Makefile.windows all
+```
 
-### Build Issues
-- Ensure compiler is installed
-- Check file paths and permissions
-- Verify Make installation
-- Review compiler error messages
+### Cross-compiling for Windows on Linux
+To cross-compile for Windows on Linux:
 
-### Runtime Issues
-- Check input data validity
-- Verify file accessibility
-- Ensure sufficient memory
-- Review output format
+```sh
+cd <Project>
+make -f Makefile.wine all
+make -f Makefile.wine exe
+```
 
-### Performance Issues
-- Check compiler optimization flags
-- Profile hot code paths
-- Review algorithm complexity
-- Consider input size
+To clean and rebuild:
 
-## Future Improvements
+```sh
+make -f Makefile.wine clean
+make -f Makefile.wine all
+```
 
-Potential enhancements:
-- Additional optimization opportunities
-- Extended functionality
-- Platform-specific optimizations
-- Performance profiling
+### WebAssembly
+To build for WebAssembly:
 
-## References
+```sh
+cd <Project>
+make -f Makefile.web all
+make -f Makefile.web exe
+```
 
-For technical background:
-- Algorithm textbooks
-- Computer science references
-- Language documentation
-- Online educational resources
+To clean and rebuild:
+
+```sh
+make -f Makefile.web clean
+make -f Makefile.web all
+```
 
 ---
 
-*Project implementing practical algorithms and data structures in C/C++*
+This README provides a comprehensive overview of the project, its features, and how to build and run it across different platforms.
