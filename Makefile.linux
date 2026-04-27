@@ -39,9 +39,11 @@ cleanlib:
 lib: $(SO_FILES)
 
 $(BIN_DIR)/%.so: $(LIB_DIR)/%.c
+	mkdir -p $(BIN_DIR)
 	$(CC) $(CFLAGS) -fPIC -o $@ $< -shared $(LDFLAGS)
 
 win:
+	mkdir -p $(BIN_DIR)
 	$(CC) $(CFLAGS) -fPIC -o ./$(BIN_DIR)/window.so ./$(LIB_DIR)/window.c -shared $(LDFLAGS) -lX11 -lpng -ljpeg
 
 do: clean all exe
