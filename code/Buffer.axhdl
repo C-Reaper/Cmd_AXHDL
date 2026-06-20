@@ -66,3 +66,152 @@ arch MAIN
         s2.a = m1.d
     end
 end
+
+/*
+
+if a > b
+    if a > b
+        c = a
+    else
+        c = a + a
+    end
+else
+    if b > b
+        c = b
+    else
+        c = a + a
+    end
+end
+
+============================
+
+if a > b
+    c0 = a
+else
+    c0 = b
+end
+
+if c0 > b
+    c0 = c0
+else
+    c0 = a + a
+end
+
+c = c0
+
+============================
+
+chip MUX m0
+    m0.a = a
+    m0.b = b
+    m0.c = a > b
+end
+chip MUX m1
+    m1.a = m0.d
+    m1.b = a + a
+    m1.c = m0.d > b
+    c = m1.d
+end
+
+============================
+
+if b0
+    if b1
+        return v0
+    else
+        return v1
+    end
+else
+    if b2
+        return v2
+    else
+        return v3
+    end
+end
+
+============================
+
+chip MUX m0
+    m0.c = b0
+end
+chip MUX m1
+    m1.a = v0
+    m1.b = v1
+    m1.c = b1
+    m0.a = m1.d
+end
+chip MUX m2
+    m2.a = v2
+    m2.b = v3
+    m2.c = b2
+    m0.b = m2.d
+end
+c = m0.d
+
+============================
+
+c =
+  b0  &&   b1  return v0
+  b0  && !(b1) return v1
+!(b0) &&   b2  return v2
+!(b0) && !(b2) return v3
+
+match b
+    case 0000: a = b
+end
+
+============================
+
+chip MUX m0
+    m0.a = v0
+    m0.b = out
+    m0.c = b0 && b1
+    out = m0.d
+end
+chip MUX m1
+    m1.a = v1
+    m1.b = out
+    m1.c = b0 && !b1
+    out = m1.d
+end
+chip MUX m2
+    m2.a = v2
+    m2.b = out
+    m2.c = !b0 && b1
+    out = m2.d
+end
+chip MUX m3
+    m3.a = v3
+    m3.b = out
+    m3.c = !b0 && !b1
+    out = m3.d
+end
+
+============================
+
+if b0
+    if b1
+        return v0
+    else
+        return v1
+    end
+else
+    return v2
+end
+
+============================
+
+c =
+  b0  &&   b1  return v0
+  b0  && !(b1) return v1
+!(b0)          return v2
+
+============================
+
+chip MUX m0
+    m0.a = a
+    m0.b = b
+    m0.c = a > b
+end
+
+*/

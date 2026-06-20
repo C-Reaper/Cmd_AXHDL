@@ -1,66 +1,11 @@
 #include "/home/codeleaded/System/Static/Library/AlxExternFunctions.h"
 #include "/home/codeleaded/System/Static/Library/AXHDL.h"
 
-/*
-Token Unsigned_Unsigned_Handler_Ass(AXHDL* hdl,Token* op,Vector* args){
-    Token* a = (Token*)Vector_Get(args,0);
-    Token* b = (Token*)Vector_Get(args,1);
-
-    printf("[Unsigned]: ASS: %s = %s\n",a->str,b->str);
-
-    if(b->tt==TOKEN_NUMBER){
-        
-    }else if(b->tt==TOKEN_STRING){
-        
-    }else{
-        AXHDL_ErrorHandler(hdl,"Ass: Error -> %s has unsigned type!",b->str);
-        return Token_Null();
-    }
-    return Token_Cpy(a);
-}
-Token Unsigned_Unsigned_Handler_Add(AXHDL* hdl,Token* op,Vector* args){
-    Token* a = (Token*)Vector_Get(args,0);
-    Token* b = (Token*)Vector_Get(args,1);
-    
-    int realsize_a = AXHDL_TypeDrefPtrSize(hdl,a);
-    CStr imm = Number_Get(realsize_a);
-    Token ret = AXHDL_ExecuteP(hdl,a,b,op,"add","ADD","imul",imm,AXHDL_Function_Add,AXHDL_Function_Mul);
-    CStr_Free(&imm);
-    return ret;
-}
-Token Unsigned_Unsigned_Handler_Sub(AXHDL* hdl,Token* op,Vector* args){
-    Token* a = (Token*)Vector_Get(args,0);
-    Token* b = (Token*)Vector_Get(args,1);
-    
-    int realsize_a = AXHDL_TypeDrefPtrSize(hdl,a);
-    CStr imm = Number_Get(realsize_a);
-    Token ret = AXHDL_ExecuteP(hdl,a,b,op,"sub","SUB","imul",imm,AXHDL_Function_Sub,AXHDL_Function_Mul);
-    CStr_Free(&imm);
-    return ret;
-}
-Token Unsigned_Unsigned_Handler_Equ(AXHDL* hdl,Token* op,Vector* args){
-    Token* a = (Token*)Vector_Get(args,0);
-    Token* b = (Token*)Vector_Get(args,1);
-    //return AXHDL_ExecuteCmp(hdl,a,b,op,"sete","EQU",AXHDL_Function_Equ);
-    return AXHDL_ExecuteJmp(hdl,a,b,op,"jz","EQU",AXHDL_Function_Equ);
-}
-Token Unsigned_Null_Handler_Cast(AXHDL* hdl,Token* op,Vector* args){
-    Token* a = (Token*)Vector_Get(args,0);
-    return Token_By(TOKEN_CONSTSTRING_DOUBLE,"NONE");
-}
-Token Unsigned_Handler_Cast(AXHDL* hdl,Token* op,Vector* args){
-    Token* a = (Token*)Vector_Get(args,0);
-
-    if(op->str==NULL) return Unsigned_Null_Handler_Cast(hdl,op,args);
-    return Token_Null();
-}
-*/
-
 Token Unsigned_Unsigned_Handler_Dir(AXHDL* hdl,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
     Token* b = (Token*)Vector_Get(args,1);
 
-    printf("[Unsigned]: Dir: %s = %s\n",a->str,b->str);
+    //printf("[Unsigned]: Dir: %s = %s\n",a->str,b->str);
 
     AXHDL_Arch* aa = AXHDL_CurrentArch(hdl);
     if(!aa)                         AXHDL_ErrorHandler(hdl,"no arch found!");
@@ -83,7 +28,7 @@ Token Unsigned_Unsigned_Handler_And(AXHDL* hdl,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
     Token* b = (Token*)Vector_Get(args,1);
     
-    printf("[Unsigned]: And: %s & %s\n",a->str,b->str);
+    //printf("[Unsigned]: And: %s & %s\n",a->str,b->str);
 
     AXHDL_Arch* aa = AXHDL_CurrentArch(hdl);
     if(!aa)                         AXHDL_ErrorHandler(hdl,"no arch found!");
@@ -117,7 +62,7 @@ Token Unsigned_Unsigned_Handler_Or(AXHDL* hdl,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
     Token* b = (Token*)Vector_Get(args,1);
     
-    printf("[Unsigned]: Or: %s | %s\n",a->str,b->str);
+    //printf("[Unsigned]: Or: %s | %s\n",a->str,b->str);
 
     AXHDL_Arch* aa = AXHDL_CurrentArch(hdl);
     if(!aa)                         AXHDL_ErrorHandler(hdl,"no arch found!");
@@ -151,7 +96,7 @@ Token Unsigned_Unsigned_Handler_Xor(AXHDL* hdl,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
     Token* b = (Token*)Vector_Get(args,1);
     
-    printf("[Unsigned]: Xor: %s ^ %s\n",a->str,b->str);
+    //printf("[Unsigned]: Xor: %s ^ %s\n",a->str,b->str);
 
     AXHDL_Arch* aa = AXHDL_CurrentArch(hdl);
     if(!aa)                         AXHDL_ErrorHandler(hdl,"no arch found!");
@@ -184,7 +129,7 @@ Token Unsigned_Unsigned_Handler_Xor(AXHDL* hdl,Token* op,Vector* args){
 Token Unsigned_Unsigned_Handler_Not(AXHDL* hdl,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
     
-    printf("[Unsigned]: Not: ~%s\n",a->str);
+    //printf("[Unsigned]: Not: ~%s\n",a->str);
 
     AXHDL_Arch* aa = AXHDL_CurrentArch(hdl);
     if(!aa)                         AXHDL_ErrorHandler(hdl,"no arch found!");
@@ -213,7 +158,7 @@ Token Unsigned_Unsigned_Handler_Shl(AXHDL* hdl,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
     Token* b = (Token*)Vector_Get(args,1);
     
-    printf("[Unsigned]: Shl: %s << %s\n",a->str,b->str);
+    //printf("[Unsigned]: Shl: %s << %s\n",a->str,b->str);
 
     AXHDL_Arch* aa = AXHDL_CurrentArch(hdl);
     if(!aa)                         AXHDL_ErrorHandler(hdl,"no arch found!");
@@ -247,7 +192,7 @@ Token Unsigned_Unsigned_Handler_Shr(AXHDL* hdl,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
     Token* b = (Token*)Vector_Get(args,1);
     
-    printf("[Unsigned]: Shr: %s >> %s\n",a->str,b->str);
+    //printf("[Unsigned]: Shr: %s >> %s\n",a->str,b->str);
 
     AXHDL_Arch* aa = AXHDL_CurrentArch(hdl);
     if(!aa)                         AXHDL_ErrorHandler(hdl,"no arch found!");
@@ -282,7 +227,7 @@ Token Unsigned_Unsigned_Handler_Add(AXHDL* hdl,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
     Token* b = (Token*)Vector_Get(args,1);
     
-    printf("[Unsigned]: Add: %s + %s\n",a->str,b->str);
+    //printf("[Unsigned]: Add: %s + %s\n",a->str,b->str);
 
     AXHDL_Arch* aa = AXHDL_CurrentArch(hdl);
     if(!aa)                         AXHDL_ErrorHandler(hdl,"no arch found!");
@@ -316,7 +261,7 @@ Token Unsigned_Unsigned_Handler_Sub(AXHDL* hdl,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
     Token* b = (Token*)Vector_Get(args,1);
     
-    printf("[Unsigned]: Sub: %s - %s\n",a->str,b->str);
+    //printf("[Unsigned]: Sub: %s - %s\n",a->str,b->str);
 
     AXHDL_Arch* aa = AXHDL_CurrentArch(hdl);
     if(!aa)                         AXHDL_ErrorHandler(hdl,"no arch found!");
@@ -350,7 +295,7 @@ Token Unsigned_Unsigned_Handler_Mul(AXHDL* hdl,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
     Token* b = (Token*)Vector_Get(args,1);
     
-    printf("[Unsigned]: Mul: %s * %s\n",a->str,b->str);
+    //printf("[Unsigned]: Mul: %s * %s\n",a->str,b->str);
 
     AXHDL_Arch* aa = AXHDL_CurrentArch(hdl);
     if(!aa)                         AXHDL_ErrorHandler(hdl,"no arch found!");
@@ -384,7 +329,7 @@ Token Unsigned_Unsigned_Handler_Div(AXHDL* hdl,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
     Token* b = (Token*)Vector_Get(args,1);
     
-    printf("[Unsigned]: Div: %s / %s\n",a->str,b->str);
+    //printf("[Unsigned]: Div: %s / %s\n",a->str,b->str);
 
     AXHDL_Arch* aa = AXHDL_CurrentArch(hdl);
     if(!aa)                         AXHDL_ErrorHandler(hdl,"no arch found!");
@@ -417,7 +362,7 @@ Token Unsigned_Unsigned_Handler_Div(AXHDL* hdl,Token* op,Vector* args){
 Token Unsigned_Unsigned_Handler_Neg(AXHDL* hdl,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
     
-    printf("[Unsigned]: Neg: -%s\n",a->str);
+    //printf("[Unsigned]: Neg: -%s\n",a->str);
 
     AXHDL_Arch* aa = AXHDL_CurrentArch(hdl);
     if(!aa)                         AXHDL_ErrorHandler(hdl,"no arch found!");
@@ -446,7 +391,7 @@ Token Unsigned_Unsigned_Handler_Equ(AXHDL* hdl,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
     Token* b = (Token*)Vector_Get(args,1);
     
-    printf("[Unsigned]: Equ: %s == %s\n",a->str,b->str);
+    //printf("[Unsigned]: Equ: %s == %s\n",a->str,b->str);
 
     AXHDL_Arch* aa = AXHDL_CurrentArch(hdl);
     if(!aa)                         AXHDL_ErrorHandler(hdl,"no arch found!");
@@ -480,7 +425,7 @@ Token Unsigned_Unsigned_Handler_Neq(AXHDL* hdl,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
     Token* b = (Token*)Vector_Get(args,1);
     
-    printf("[Unsigned]: Neq: %s != %s\n",a->str,b->str);
+    //printf("[Unsigned]: Neq: %s != %s\n",a->str,b->str);
 
     AXHDL_Arch* aa = AXHDL_CurrentArch(hdl);
     if(!aa)                         AXHDL_ErrorHandler(hdl,"no arch found!");
@@ -514,7 +459,7 @@ Token Unsigned_Unsigned_Handler_Grt(AXHDL* hdl,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
     Token* b = (Token*)Vector_Get(args,1);
     
-    printf("[Unsigned]: Grt: %s > %s\n",a->str,b->str);
+    //printf("[Unsigned]: Grt: %s > %s\n",a->str,b->str);
 
     AXHDL_Arch* aa = AXHDL_CurrentArch(hdl);
     if(!aa)                         AXHDL_ErrorHandler(hdl,"no arch found!");
@@ -548,7 +493,7 @@ Token Unsigned_Unsigned_Handler_Les(AXHDL* hdl,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
     Token* b = (Token*)Vector_Get(args,1);
     
-    printf("[Unsigned]: Les: %s < %s\n",a->str,b->str);
+    //printf("[Unsigned]: Les: %s < %s\n",a->str,b->str);
 
     AXHDL_Arch* aa = AXHDL_CurrentArch(hdl);
     if(!aa)                         AXHDL_ErrorHandler(hdl,"no arch found!");
@@ -582,7 +527,7 @@ Token Unsigned_Unsigned_Handler_Grq(AXHDL* hdl,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
     Token* b = (Token*)Vector_Get(args,1);
     
-    printf("[Unsigned]: Grq: %s >= %s\n",a->str,b->str);
+    //printf("[Unsigned]: Grq: %s >= %s\n",a->str,b->str);
 
     AXHDL_Arch* aa = AXHDL_CurrentArch(hdl);
     if(!aa)                         AXHDL_ErrorHandler(hdl,"no arch found!");
@@ -616,7 +561,7 @@ Token Unsigned_Unsigned_Handler_Leq(AXHDL* hdl,Token* op,Vector* args){
     Token* a = (Token*)Vector_Get(args,0);
     Token* b = (Token*)Vector_Get(args,1);
     
-    printf("[Unsigned]: Leq: %s <= %s\n",a->str,b->str);
+    //printf("[Unsigned]: Leq: %s <= %s\n",a->str,b->str);
 
     AXHDL_Arch* aa = AXHDL_CurrentArch(hdl);
     if(!aa)                         AXHDL_ErrorHandler(hdl,"no arch found!");
